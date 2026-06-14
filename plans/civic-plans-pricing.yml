@@ -1,0 +1,105 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Civic
+providerId: civic
+created: '2026-06-14'
+modified: '2026-06-14'
+reconciled: true
+tags:
+  - AI Agents
+  - Authentication
+  - Digital Identity
+  - MCP
+  - Security
+description: >
+  Civic Hub uses a usage-based credit model introduced in December 2025, with a free self-serve tier
+  and a standard paid plan at $20/month providing 100,000 credits. Civic Auth is available as an
+  open-source SDK with no direct API pricing; costs arise from hosting and infrastructure. Civic Pass
+  pricing for enterprise KYC permissioning is available via sales contact. No sales call is required
+  for self-serve plans.
+sources:
+  - https://www.civic.com/pricing/
+  - https://docs.civic.com/civic/changelog
+plans:
+  - id: civic-hub-free
+    name: Civic Hub Free
+    type: freemium
+    description: Free self-serve tier for Civic Hub MCP gateway. No sales call required.
+    entries:
+      - label: Monthly credits included
+        name: credits_free
+        type: included
+        metric: credits
+        limit: 0
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+    elements:
+      - name: Single MCP gateway endpoint
+      - name: 80+ pre-built MCP server integrations
+      - name: Guardrails enforcement
+      - name: Audit logging
+      - name: Secret management
+      - name: Instant revocation
+      - name: Self-serve signup at app.civic.com
+  - id: civic-hub-standard
+    name: Civic Hub Standard
+    type: subscription
+    description: $20/month plan with 100,000 credits for Civic Hub MCP gateway access.
+    entries:
+      - label: Monthly subscription
+        name: hub_monthly
+        type: subscription
+        metric: month
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '20.00'
+        userMultiplied: false
+      - label: Credits included per month
+        name: credits_standard
+        type: included
+        metric: credits
+        limit: 100000
+        timeFrame: month
+        geo: global
+        unit: 100000
+        price: '0.00'
+        userMultiplied: false
+    elements:
+      - name: 100,000 credits per month
+      - name: Single MCP gateway endpoint
+      - name: 80+ pre-built MCP server integrations
+      - name: Guardrails enforcement
+      - name: Audit logging with full tool-call tracing
+      - name: Secret management and OAuth token storage
+      - name: Instant access revocation
+      - name: Automatic toolkit auth renewal
+      - name: Kill switch functionality
+      - name: Passkey authentication support
+  - id: civic-enterprise
+    name: Civic Enterprise
+    type: enterprise
+    description: Custom enterprise pricing for Civic Hub and Civic Pass at scale. Contact bd@civic.com.
+    entries:
+      - label: Custom contract
+        name: enterprise_contract
+        type: subscription
+        metric: contract
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: custom
+        userMultiplied: false
+    elements:
+      - name: Custom credit volumes
+      - name: SLA guarantees
+      - name: Dedicated support
+      - name: Civic Pass KYC permissioning
+      - name: Custom guardrail policies
+      - name: Volume discounts

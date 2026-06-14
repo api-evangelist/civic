@@ -1,0 +1,56 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Civic
+providerId: civic
+created: '2026-06-14'
+modified: '2026-06-14'
+reconciled: true
+tags:
+  - Rate Limiting
+  - AI Agents
+  - MCP
+  - Security
+description: >
+  Civic Hub enforces rate limits via a credit-based consumption model. Specific per-second or
+  per-minute hard limits are not published publicly; the platform uses a credit meter where the
+  free tier provides no included credits and the standard plan provides 100,000 credits per month.
+  HTTP 401 is returned for expired or invalid tokens. No explicit throttling response code has
+  been documented; contact Civic support for high-volume requirements.
+sources:
+  - https://docs.civic.com/civic/quickstart/ai-prompt
+  - https://docs.civic.com/civic/reference/security
+  - https://docs.civic.com/civic/changelog
+headers:
+  requestId: Authorization
+responseCodes:
+  unauthorized: 401
+limits:
+  - name: Monthly credits (Standard plan)
+    scope: account
+    metric: credits_per_month
+    limit: 100000
+    timeFrame: month
+  - name: Monthly credits (Free tier)
+    scope: account
+    metric: credits_per_month
+    limit: 0
+    timeFrame: month
+policies:
+  - name: Bearer token expiry
+    description: >
+      Hub access tokens expire after 30 days. HTTP 401 is returned on expiry; regenerate
+      the token at app.civic.com and update environment variables.
+  - name: Profile parameter required
+    description: >
+      Requests to https://app.civic.com/hub/mcp without a ?profile=your-toolkit query parameter
+      will return no tools. Always include the profile scoped to your toolkit configuration.
+  - name: Streamable HTTP transport required
+    description: >
+      Civic Hub uses Streamable HTTP transport exclusively. Clients configured for stdio or
+      legacy SSE will fail to connect. Verify the transport type in your framework configuration.
+  - name: Credit consumption
+    description: >
+      Each tool call consumes credits from the monthly allocation. Overage handling and
+      per-tool credit costs are configured in the app.civic.com dashboard. Contact
+      bd@civic.com for high-volume credit needs.

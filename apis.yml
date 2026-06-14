@@ -1,0 +1,158 @@
+aid: civic
+name: Civic
+description: >
+  Civic is a digital identity and security platform offering authentication, identity verification, and AI agent
+  security infrastructure. Core products include Civic Hub (a Model Context Protocol gateway with guardrails, audit
+  logging, secret management, and instant revocation for AI agents connecting to tools), Civic Auth (OAuth 2.0 / PKCE
+  authentication for web and mobile apps with email, Google, and Web3 wallet sign-in plus embedded wallets on Solana
+  and EVM chains), and Civic Labs (open-source agent infrastructure components). Originally known as a Web3 identity
+  and KYC verification platform issuing Civic Passes (non-transferable on-chain tokens representing verified user
+  attributes), Civic has evolved into a broader agent security layer. The Hub MCP gateway exposes a single Streamable
+  HTTP endpoint backed by 80+ pre-built MCP server integrations and is compatible with 23+ AI agent frameworks.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+- AI Agents
+- Authentication
+- Digital Identity
+- Identity Verification
+- KYC
+- MCP
+- OAuth
+- Security
+- Solana
+- Web3
+- Wallets
+url: https://raw.githubusercontent.com/api-evangelist/civic/refs/heads/main/apis.yml
+created: '2026-06-14'
+modified: '2026-06-14'
+specificationVersion: '0.19'
+apis:
+- aid: civic:civic-hub-mcp-api
+  name: Civic Hub MCP API
+  description: >
+    Civic Hub is a Model Context Protocol gateway that provides AI agents with secure, audited access to 80+ external
+    tools and services through a single Streamable HTTP endpoint. Authentication uses 30-day Bearer tokens generated
+    at app.civic.com. The gateway enforces least-privilege guardrails at the tool, server, and toolkit levels, logs
+    every tool call with parameters and responses, manages OAuth tokens and API keys for connected services, and
+    supports instant revocation of all agent access with a single click. Compatible with Anthropic SDK, OpenAI Agents
+    SDK, LangChain, LangGraph, Pydantic AI, Vercel AI SDK, and all standard MCP clients.
+  humanURL: https://docs.civic.com/
+  baseURL: https://app.civic.com/hub/mcp
+  tags:
+  - AI Agents
+  - Audit Logging
+  - Guardrails
+  - MCP
+  - Security
+  - Tool Access
+  properties:
+  - type: Documentation
+    url: https://docs.civic.com/
+  - type: GettingStarted
+    url: https://docs.civic.com/civic/quickstart
+  - type: Authentication
+    url: https://docs.civic.com/civic/reference/security
+  - type: Changelog
+    url: https://docs.civic.com/civic/changelog
+  - type: Repository
+    url: https://github.com/civicteam/typescript-sdk
+- aid: civic:civic-auth-api
+  name: Civic Auth API
+  description: >
+    Civic Auth provides OAuth 2.0 and PKCE-based authentication for web and mobile applications with support for
+    email, Google, and Web3 wallet sign-in. Includes embedded wallet provisioning on Solana and EVM chains. The
+    @civic/auth npm package integrates with Next.js, React, Express, and Hono. The @civic/auth-web3 variant adds
+    Web3-specific authentication via Wagmi. The @civic/auth-mcp package enables MCP server and client authentication
+    with legacy OAuth compatibility endpoints including /.well-known/oauth-authorization-server, /authorize, /token,
+    and /register. Client IDs are configured via environment variables and tokens are obtained through the standard
+    OAuth 2.0 authorization code with PKCE flow.
+  humanURL: https://docs.civic.com/
+  baseURL: https://auth.civic.com
+  tags:
+  - Authentication
+  - Embedded Wallets
+  - MCP
+  - OAuth
+  - PKCE
+  - Solana
+  - Web3
+  properties:
+  - type: Documentation
+    url: https://docs.civic.com/
+  - type: GettingStarted
+    url: https://docs.civic.com/civic/quickstart
+  - type: Repository
+    url: https://github.com/civicteam/civic-auth-examples
+  - type: SDK
+    url: https://www.npmjs.com/package/@civic/auth
+  - type: SDK
+    url: https://www.npmjs.com/package/@civic/auth-web3
+  - type: SDK
+    url: https://www.npmjs.com/package/@civic/auth-mcp
+  - type: Repository
+    url: https://github.com/civicteam/auth-mcp
+  - type: Repository
+    url: https://github.com/civicteam/civic-auth-py
+- aid: civic:civic-pass-api
+  name: Civic Pass API
+  description: >
+    Civic Pass is a permissioning system that issues non-transferable on-chain tokens (Civic Passes) representing
+    verified user attributes such as identity verification, liveness checks, and location. Passes are stored on
+    Solana and EVM chains as attestations, keeping sensitive PII off-chain while enabling smart contracts and
+    applications to gate access based on verified attributes. Civic has issued more than 925,000 Civic Passes.
+    Use cases include bot prevention in Web3 gaming, DeFi access control, KYC-gated token sales, and
+    wallet-based identity attestation. The Solana Attestation Service SDK and transfer hook for Token2022 are
+    available as open-source libraries.
+  humanURL: https://www.civic.com/
+  baseURL: https://api.civic.com
+  tags:
+  - Attestation
+  - Blockchain
+  - Identity Verification
+  - KYC
+  - Permissioning
+  - Solana
+  - Token-Gating
+  - Web3
+  properties:
+  - type: Documentation
+    url: https://www.civic.com/
+  - type: Repository
+    url: https://github.com/civicteam/solana-attestation-service
+  - type: Repository
+    url: https://github.com/civicteam/token-extensions-transfer-hook
+  - type: SDK
+    url: https://github.com/civicteam/npm-civic-sip-api
+common:
+- type: Website
+  url: https://www.civic.com/
+- type: Documentation
+  url: https://docs.civic.com/
+- type: GettingStarted
+  url: https://docs.civic.com/civic/quickstart
+- type: Portal
+  url: https://app.civic.com
+- type: SignUp
+  url: https://app.civic.com
+- type: Pricing
+  url: https://www.civic.com/pricing/
+- type: Plans
+  url: plans/civic-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/civic-rate-limits.yml
+- type: FinOps
+  url: finops/civic-finops.yml
+- type: Blog
+  url: https://www.civic.com/blog/
+- type: Changelog
+  url: https://docs.civic.com/civic/changelog
+- type: GitHubOrganization
+  url: https://github.com/civicteam
+- type: Security
+  url: https://docs.civic.com/civic/reference/security
+- type: Contact
+  url: mailto:bd@civic.com
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
