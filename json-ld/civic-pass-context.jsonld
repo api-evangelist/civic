@@ -1,0 +1,145 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "civic": "https://www.civic.com/vocab/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "CivicPass": {
+      "@id": "civic:CivicPass",
+      "@type": "@id",
+      "description": "A non-transferable on-chain token representing verified user attributes issued by Civic"
+    },
+    "GatekeeperNetwork": {
+      "@id": "civic:GatekeeperNetwork",
+      "@type": "@id",
+      "description": "An on-chain address identifying the type of Civic Pass and verification requirements"
+    },
+    "CivicPassEvent": {
+      "@id": "civic:CivicPassEvent",
+      "@type": "@id",
+      "description": "An immutable log entry for an action taken on a Civic Pass"
+    },
+    "BlockchainTransaction": {
+      "@id": "civic:BlockchainTransaction",
+      "@type": "@id",
+      "description": "A blockchain transaction associated with a Civic Pass event"
+    },
+
+    "id": "@id",
+    "type": "@type",
+
+    "passId": {
+      "@id": "civic:passId",
+      "@type": "xsd:string"
+    },
+    "walletAddress": {
+      "@id": "civic:walletAddress",
+      "@type": "xsd:string"
+    },
+    "gatekeeperNetwork": {
+      "@id": "civic:gatekeeperNetwork",
+      "@type": "xsd:string"
+    },
+    "chain": {
+      "@id": "civic:chain",
+      "@type": "xsd:string",
+      "description": "The blockchain type (solana or ethereum)"
+    },
+    "chainNetwork": {
+      "@id": "civic:chainNetwork",
+      "@type": "xsd:string",
+      "description": "The specific network within the blockchain type"
+    },
+    "state": {
+      "@id": "civic:state",
+      "@type": "xsd:string",
+      "description": "The current off-chain status of the Civic Pass"
+    },
+    "onChainState": {
+      "@id": "civic:onChainState",
+      "@type": "xsd:string",
+      "description": "The confirmed on-chain status of the Civic Pass"
+    },
+    "expiryTimestamp": {
+      "@id": "civic:expiryTimestamp",
+      "@type": "xsd:integer",
+      "description": "Unix epoch timestamp (seconds) after which the pass expires"
+    },
+    "eventType": {
+      "@id": "civic:eventType",
+      "@type": "xsd:string"
+    },
+    "timestamp": {
+      "@id": "civic:timestamp",
+      "@type": "xsd:integer"
+    },
+    "transactionIdentifier": {
+      "@id": "civic:transactionIdentifier",
+      "@type": "xsd:string"
+    },
+    "transactionStatus": {
+      "@id": "civic:transactionStatus",
+      "@type": "xsd:string"
+    },
+    "events": {
+      "@id": "civic:events",
+      "@container": "@list"
+    },
+    "scopeRequestId": {
+      "@id": "civic:scopeRequestId",
+      "@type": "xsd:string",
+      "description": "UUID identifying a PII verification request"
+    },
+    "piiStatus": {
+      "@id": "civic:piiStatus",
+      "@type": "xsd:string"
+    },
+    "verifiedInformation": {
+      "@id": "civic:verifiedInformation",
+      "@type": "@json"
+    },
+    "name": {
+      "@id": "schema:name"
+    },
+    "description": {
+      "@id": "schema:description"
+    },
+    "url": {
+      "@id": "schema:url",
+      "@type": "@id"
+    },
+    "email": {
+      "@id": "schema:email"
+    },
+    "dateOfBirth": {
+      "@id": "schema:birthDate",
+      "@type": "xsd:date"
+    }
+  },
+  "@graph": [
+    {
+      "@id": "civic:CivicPass",
+      "@type": "schema:DigitalDocument",
+      "schema:name": "Civic Pass",
+      "schema:description": "A non-transferable on-chain token (attestation) issued to a user's blockchain wallet representing verified identity attributes.",
+      "schema:url": "https://docs.civic.com/"
+    },
+    {
+      "@id": "civic:CivicHub",
+      "@type": "schema:SoftwareApplication",
+      "schema:name": "Civic Hub",
+      "schema:description": "An MCP (Model Context Protocol) gateway providing AI agents with secure, audited access to 80+ external tools through a single Streamable HTTP endpoint.",
+      "schema:url": "https://app.civic.com/hub/mcp",
+      "schema:applicationCategory": "SecurityApplication"
+    },
+    {
+      "@id": "civic:CivicAuth",
+      "@type": "schema:SoftwareApplication",
+      "schema:name": "Civic Auth",
+      "schema:description": "OAuth 2.0 / PKCE-based authentication service for web and mobile applications with Web3 wallet sign-in and embedded wallet provisioning.",
+      "schema:url": "https://auth.civic.com",
+      "schema:applicationCategory": "AuthenticationApplication"
+    }
+  ]
+}

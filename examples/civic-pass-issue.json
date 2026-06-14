@@ -1,0 +1,36 @@
+{
+  "title": "Issue a Civic Pass - Example",
+  "description": "Example request and response for issuing a Civic Pass to a user's Ethereum wallet on the Sepolia testnet.",
+  "request": {
+    "method": "POST",
+    "url": "https://api.civic.com/partner/pass/ethereum/sepolia",
+    "headers": {
+      "Authorization": "Bearer <access_token>",
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "walletAddress": "0xEA5Ce8F9C81b681876DC713d33371c3E262A5888"
+    }
+  },
+  "response": {
+    "status": 202,
+    "description": "The issuance of the Civic Pass has been initiated (asynchronous).",
+    "body": {
+      "id": "63fdf96c58f1ae40a26a89be",
+      "chain": {
+        "type": "ethereum",
+        "network": "sepolia"
+      },
+      "gatekeeperNetwork": "tgnuXXNMDLK8dy7Xm1TdeGyc95MDym4bvAQCwcW21Bf",
+      "walletAddress": "0xEA5Ce8F9C81b681876DC713d33371c3E262A5888",
+      "state": "REQUESTED",
+      "onChainState": "ACTIVE",
+      "events": [
+        {
+          "eventType": "TOKEN_ISSUED_INITIATED",
+          "timestamp": 1677588899
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,127 @@
+{
+  "title": "Civic Pass API Vocabulary",
+  "description": "Domain vocabulary for the Civic Pass Customer API covering key terms, concepts, and values used across the API surface.",
+  "source": "https://raw.githubusercontent.com/civicteam/openapi-docs/master/swagger.yaml",
+  "terms": [
+    {
+      "term": "Civic Pass",
+      "definition": "A non-transferable on-chain token (attestation) issued to a user's blockchain wallet that represents verified user attributes such as identity, liveness, or location. Cannot be transferred between wallets.",
+      "type": "concept"
+    },
+    {
+      "term": "Gatekeeper Network",
+      "definition": "An on-chain address identifying the type of pass and the verification requirements. Each gatekeeper network corresponds to a specific verification tier (e.g., uniqueness, liveness, identity).",
+      "type": "concept",
+      "example": "tgnuXXNMDLK8dy7Xm1TdeGyc95MDym4bvAQCwcW21Bf"
+    },
+    {
+      "term": "chain",
+      "definition": "The blockchain programming model. Civic supports 'solana' and 'ethereum' (including EVM-compatible L2 networks).",
+      "type": "parameter",
+      "values": ["solana", "ethereum"]
+    },
+    {
+      "term": "chainNetwork",
+      "definition": "A specific network within a blockchain type, such as a mainnet or testnet. For example, 'sepolia' is an Ethereum testnet; 'mainnet-beta' is Solana mainnet.",
+      "type": "parameter",
+      "values": [
+        "mainnet-beta", "devnet", "mainnet", "sepolia", "polygonAmoy",
+        "polygonMainnet", "polygonZKEVM", "polygonZKEVMTestnet",
+        "optimismSepolia", "optimismMainnet", "arbitrumSepolia", "arbitrumMainnet",
+        "avalancheCChain", "avalancheCChainFuji", "xdcMainnet", "xdcApothem",
+        "fantomMainnet", "fantomTestnet", "baseSepolia", "baseMainnet",
+        "bscMainnet", "bscTestnet", "xlayerMainnet", "xlayerTestnet",
+        "unichainMainnet", "unichainSepolia", "sonicMainnet", "sonicTestnet"
+      ]
+    },
+    {
+      "term": "walletAddress",
+      "definition": "A user's blockchain wallet address. For Solana this is a base58-encoded public key; for Ethereum it is a hex-encoded EVM address.",
+      "type": "parameter",
+      "examples": {
+        "solana": "4v4PL5bMZXXvQB3mvWPXLvqfJpjJmPRnPrmENnUESQQQ",
+        "ethereum": "0xEA5Ce8F9C81b681876DC713d33371c3E262A5888"
+      }
+    },
+    {
+      "term": "state",
+      "definition": "The current status of a Civic Pass as tracked by Civic's off-chain system.",
+      "type": "enum",
+      "values": [
+        {
+          "value": "ACTIVE",
+          "description": "The pass is valid and active."
+        },
+        {
+          "value": "FROZEN",
+          "description": "The pass is temporarily suspended; can be unfrozen."
+        },
+        {
+          "value": "REVOKED",
+          "description": "The pass has been permanently revoked; cannot be reissued to the same wallet on the same chain/network."
+        },
+        {
+          "value": "REQUESTED",
+          "description": "A pass issuance has been initiated but not yet confirmed on-chain."
+        },
+        {
+          "value": "REJECTED",
+          "description": "The pass request was rejected."
+        }
+      ]
+    },
+    {
+      "term": "onChainState",
+      "definition": "The confirmed state of the Civic Pass as recorded on the blockchain. May lag behind 'state' during asynchronous blockchain operations.",
+      "type": "enum",
+      "values": ["ACTIVE", "FROZEN", "REVOKED"]
+    },
+    {
+      "term": "scopeRequestId",
+      "definition": "A UUID provided by Civic after a user submits their PII for identity verification. Used to retrieve verified user information via the PII request endpoints.",
+      "type": "parameter",
+      "example": "9a7a77af-a58e-4e54-83c9-5daa96ccbf11"
+    },
+    {
+      "term": "PII",
+      "definition": "Personally Identifiable Information. Civic collects and verifies user PII (e.g., name, date of birth, document number) off-chain and provides it to partners via the /piirequest endpoint. Sensitive PII is never stored on-chain.",
+      "type": "concept"
+    },
+    {
+      "term": "partner-pass",
+      "definition": "A PII request status value indicating the partner has approved the receipt of user PII and authorized issuance of the Civic Pass.",
+      "type": "value"
+    },
+    {
+      "term": "partner-fail",
+      "definition": "A PII request status value indicating the partner has rejected the user's PII and blocked issuance of the Civic Pass.",
+      "type": "value"
+    },
+    {
+      "term": "expiryTimestamp",
+      "definition": "A Unix epoch timestamp (seconds) after which the Civic Pass is considered expired. Can be set via PATCH to force a user to re-verify.",
+      "type": "parameter",
+      "example": 1677593295
+    },
+    {
+      "term": "event",
+      "definition": "An immutable log entry recording every action taken on a Civic Pass, including issuance, freezing, unfreezing, expiration changes, and revocation. Each event has a type, timestamp, and optional blockchain transaction reference.",
+      "type": "concept"
+    },
+    {
+      "term": "OAuth 2.0 Client Credentials",
+      "definition": "The authentication flow used by the Civic Pass Customer API. Partners obtain an access token from https://auth0.civic.com/oauth/token using their client_id and client_secret, then include the token as a Bearer token in API requests.",
+      "type": "concept"
+    },
+    {
+      "term": "Civic Hub",
+      "definition": "An MCP (Model Context Protocol) gateway that provides AI agents with secure, audited access to 80+ external tools through a single Streamable HTTP endpoint at app.civic.com/hub/mcp.",
+      "type": "product"
+    },
+    {
+      "term": "Civic Auth",
+      "definition": "OAuth 2.0 / PKCE-based authentication service for web and mobile apps, supporting email, Google, and Web3 wallet sign-in with embedded wallet provisioning on Solana and EVM chains.",
+      "type": "product"
+    }
+  ]
+}

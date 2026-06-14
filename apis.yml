@@ -118,6 +118,8 @@ apis:
   properties:
   - type: Documentation
     url: https://www.civic.com/
+  - type: OpenAPI
+    url: openapi/civic-pass-customer-api.yaml
   - type: Repository
     url: https://github.com/civicteam/solana-attestation-service
   - type: Repository

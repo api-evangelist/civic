@@ -1,0 +1,68 @@
+{
+  "title": "List Civic Passes - Example",
+  "description": "Example request and response for listing all Civic Passes issued, filtered to ACTIVE passes with pagination.",
+  "request": {
+    "method": "POST",
+    "url": "https://api.civic.com/partner/pass",
+    "headers": {
+      "Authorization": "Bearer <access_token>",
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "limit": 20,
+      "skip": 0,
+      "filter": {
+        "state": "ACTIVE"
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "records": [
+        {
+          "id": "63fdf96c58f1ae40a26a89be",
+          "chain": {
+            "type": "ethereum",
+            "network": "sepolia"
+          },
+          "gatekeeperNetwork": "tgnuXXNMDLK8dy7Xm1TdeGyc95MDym4bvAQCwcW21Bf",
+          "walletAddress": "0xEA5Ce8F9C81b681876DC713d33371c3E262A5888",
+          "state": "ACTIVE",
+          "onChainState": "ACTIVE",
+          "events": [
+            {
+              "eventType": "TOKEN_ISSUED",
+              "timestamp": 1677588899,
+              "transaction": {
+                "identifier": "0xabc123def456...",
+                "status": "confirmed"
+              }
+            }
+          ]
+        },
+        {
+          "id": "64aef12a91c2be50b37d90cc",
+          "chain": {
+            "type": "solana",
+            "network": "devnet"
+          },
+          "gatekeeperNetwork": "tgnuXXNMDLK8dy7Xm1TdeGyc95MDym4bvAQCwcW21Bf",
+          "walletAddress": "4v4PL5bMZXXvQB3mvWPXLvqfJpjJmPRnPrmENnUESQQQ",
+          "state": "ACTIVE",
+          "onChainState": "ACTIVE",
+          "events": [
+            {
+              "eventType": "TOKEN_ISSUED",
+              "timestamp": 1688000000,
+              "transaction": {
+                "identifier": "4GWazp2AqMmxkE6GKCoYf9rbgFL6eDTuMx9z7719eccSeCEYu9hiCvmcr9cK6ioiTUGZzvcWf6iB7fd3YCg39PT6",
+                "status": "confirmed"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

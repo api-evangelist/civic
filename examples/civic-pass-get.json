@@ -1,0 +1,39 @@
+{
+  "title": "Retrieve a Civic Pass - Example",
+  "description": "Example request and response for retrieving the full details of a Civic Pass issued to a specific wallet on Sepolia.",
+  "request": {
+    "method": "GET",
+    "url": "https://api.civic.com/partner/pass/ethereum/sepolia/0xEA5Ce8F9C81b681876DC713d33371c3E262A5888",
+    "headers": {
+      "Authorization": "Bearer <access_token>"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "id": "63fdf96c58f1ae40a26a89be",
+      "chain": {
+        "type": "ethereum",
+        "network": "sepolia"
+      },
+      "gatekeeperNetwork": "tgnuXXNMDLK8dy7Xm1TdeGyc95MDym4bvAQCwcW21Bf",
+      "walletAddress": "0xEA5Ce8F9C81b681876DC713d33371c3E262A5888",
+      "state": "ACTIVE",
+      "onChainState": "ACTIVE",
+      "events": [
+        {
+          "eventType": "TOKEN_ISSUED_INITIATED",
+          "timestamp": 1677588800
+        },
+        {
+          "eventType": "TOKEN_ISSUED",
+          "timestamp": 1677588899,
+          "transaction": {
+            "identifier": "0xabc123def456...",
+            "status": "confirmed"
+          }
+        }
+      ]
+    }
+  }
+}

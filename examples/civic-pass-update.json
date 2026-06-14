@@ -1,0 +1,21 @@
+{
+  "title": "Update a Civic Pass - Example",
+  "description": "Example request and response for freezing a Civic Pass on Ethereum Sepolia.",
+  "request": {
+    "method": "PATCH",
+    "url": "https://api.civic.com/partner/pass/ethereum/sepolia/0xEA5Ce8F9C81b681876DC713d33371c3E262A5888",
+    "headers": {
+      "Authorization": "Bearer <access_token>",
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "state": "FROZEN"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "status": "ok"
+    }
+  }
+}

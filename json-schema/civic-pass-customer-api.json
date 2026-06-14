@@ -1,0 +1,245 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/civic/main/json-schema/civic-pass-customer-api.json",
+  "title": "Civic Pass Customer API Schemas",
+  "description": "JSON Schema definitions extracted from the Civic Pass Customer API (OpenAPI 3.0.3)",
+  "definitions": {
+    "Chain": {
+      "type": "string",
+      "description": "The blockchain programming model type",
+      "enum": ["solana", "ethereum"]
+    },
+    "ChainNetwork": {
+      "type": "string",
+      "description": "A specific network within a blockchain type",
+      "enum": [
+        "mainnet-beta",
+        "devnet",
+        "mainnet",
+        "sepolia",
+        "polygonAmoy",
+        "polygonMainnet",
+        "polygonZKEVM",
+        "polygonZKEVMTestnet",
+        "optimismSepolia",
+        "optimismMainnet",
+        "arbitrumSepolia",
+        "arbitrumMainnet",
+        "avalancheCChain",
+        "avalancheCChainFuji",
+        "xdcMainnet",
+        "xdcApothem",
+        "fantomMainnet",
+        "fantomTestnet",
+        "baseSepolia",
+        "baseMainnet",
+        "bscMainnet",
+        "bscTestnet",
+        "xlayerMainnet",
+        "xlayerTestnet",
+        "unichainMainnet",
+        "unichainSepolia",
+        "sonicMainnet",
+        "sonicTestnet"
+      ]
+    },
+    "State": {
+      "type": "string",
+      "description": "The status of a Civic Pass",
+      "enum": ["ACTIVE", "REVOKED", "FROZEN", "REQUESTED", "REJECTED"]
+    },
+    "Wallet": {
+      "type": "object",
+      "description": "The wallet address to issue a Civic Pass to",
+      "properties": {
+        "walletAddress": {
+          "type": "string",
+          "example": "0xEA5Ce8F9C81b681876DC713d33371c3E262A5888"
+        }
+      },
+      "required": ["walletAddress"]
+    },
+    "UpdateState": {
+      "type": "object",
+      "description": "Payload to update a Civic Pass state or expiration",
+      "properties": {
+        "state": {
+          "$ref": "#/definitions/State"
+        },
+        "expiryTimestamp": {
+          "type": "number",
+          "description": "The new expiration timestamp (Unix epoch seconds)",
+          "example": 1677593295
+        }
+      }
+    },
+    "PassEvent": {
+      "type": "object",
+      "description": "An event recorded against a Civic Pass",
+      "properties": {
+        "eventType": {
+          "type": "string",
+          "enum": [
+            "TOKEN_ISSUED_INITIATED",
+            "TOKEN_ISSUED",
+            "TOKEN_FROZEN_INITIATED",
+            "TOKEN_FROZEN",
+            "TOKEN_EXPIRY_CHANGED_INITIATED",
+            "TOKEN_EXPIRY_CHANGED",
+            "TOKEN_UNFROZEN_INITIATED",
+            "TOKEN_UNFROZEN",
+            "TOKEN_REVOKED_INITIATED",
+            "TOKEN_REVOKED"
+          ]
+        },
+        "timestamp": {
+          "type": "number",
+          "example": 1677588899
+        },
+        "transaction": {
+          "type": "object",
+          "description": "Associated blockchain transaction details",
+          "properties": {
+            "identifier": {
+              "type": "string",
+              "example": "4GWazp2AqMmxkE6GKCoYf9rbgFL6eDTuMx9z7719eccSeCEYu9hiCvmcr9cK6ioiTUGZzvcWf6iB7fd3YCg39PT6"
+            },
+            "status": {
+              "type": "string",
+              "enum": ["sent", "confirmed", "failed"]
+            }
+          },
+          "required": ["identifier"]
+        }
+      },
+      "required": ["eventType", "timestamp"]
+    },
+    "PassResponse": {
+      "type": "object",
+      "description": "Full details of a Civic Pass",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "A unique, Civic-specific identifier for the Civic Pass",
+          "example": "63fdf96c58f1ae40a26a89be"
+        },
+        "chain": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "$ref": "#/definitions/Chain"
+            },
+            "network": {
+              "$ref": "#/definitions/ChainNetwork"
+            }
+          },
+          "required": ["type", "network"]
+        },
+        "gatekeeperNetwork": {
+          "type": "string",
+          "description": "The address of the Gatekeeper Network this Civic Pass was issued for",
+          "example": "tgnuXXNMDLK8dy7Xm1TdeGyc95MDym4bvAQCwcW21Bf"
+        },
+        "walletAddress": {
+          "type": "string",
+          "description": "The wallet address that the Civic Pass is issued for",
+          "example": "4v4PL5bMZXXvQB3mvWPXLvqfJpjJmPRnPrmENnUESQQQ"
+        },
+        "state": {
+          "type": "string",
+          "enum": ["ACTIVE", "FROZEN", "REVOKED", "REQUESTED"]
+        },
+        "onChainState": {
+          "type": "string",
+          "enum": ["ACTIVE", "FROZEN", "REVOKED"]
+        },
+        "events": {
+          "type": "array",
+          "description": "Any action on a Civic Pass results in an event appended to this list",
+          "items": {
+            "$ref": "#/definitions/PassEvent"
+          }
+        }
+      },
+      "required": ["chain", "gatekeeperNetwork", "walletAddress", "events", "id", "onChainState", "state"]
+    },
+    "GetPiiResponse": {
+      "type": "object",
+      "description": "User PII data returned after verification",
+      "properties": {
+        "status": {
+          "type": "string",
+          "description": "The status of this PII request",
+          "enum": [
+            "awaiting-user",
+            "user-acknowledged",
+            "verification-success",
+            "verification-failed",
+            "user-cancelled",
+            "partner-pass",
+            "partner-fail"
+          ]
+        },
+        "verifiedInformation": {
+          "type": "object",
+          "description": "All user PII that Civic could verify; fields vary by pass configuration",
+          "example": {
+            "email": "user@example.com",
+            "documentType": "passport",
+            "issueCountry": "GBR",
+            "name": "First Middle Last",
+            "dateOfBirth": "1990-01-01",
+            "dateOfExpiry": "2035-05-28",
+            "documentNumber": "0123456789",
+            "address": "0x1234abcd"
+          }
+        },
+        "links": {
+          "type": "array",
+          "description": "URLs for evidence items collected from the user",
+          "items": {
+            "type": "object",
+            "properties": {
+              "rel": {
+                "type": "string",
+                "example": "idDocumentFront"
+              },
+              "href": {
+                "type": "string",
+                "example": "https://api.civic.com/partner/piirequest/9a7a77af-a58e-4e54-83c9-5daa96ccbf11"
+              }
+            }
+          }
+        }
+      }
+    },
+    "ListPassRequest": {
+      "type": "object",
+      "description": "Request body for listing Civic Passes with optional pagination and filtering",
+      "properties": {
+        "limit": {
+          "type": "number",
+          "default": 20,
+          "description": "Number of records to return per page"
+        },
+        "skip": {
+          "type": "number",
+          "default": 0,
+          "description": "Number of records to skip for pagination"
+        },
+        "filter": {
+          "type": "object",
+          "properties": {
+            "state": {
+              "$ref": "#/definitions/State"
+            },
+            "walletAddress": {
+              "type": "string",
+              "example": "4v4PL5bMZXXvQB3mvWPXLvqfJpjJmPRnPrmENnUESQQQ"
+            }
+          }
+        }
+      }
+    }
+  }
+}

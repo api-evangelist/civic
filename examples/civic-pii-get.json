@@ -1,0 +1,37 @@
+{
+  "title": "Get User PII - Example",
+  "description": "Example request and response for retrieving user PII after Civic verification using a scopeRequestId.",
+  "request": {
+    "method": "GET",
+    "url": "https://api.civic.com/partner/piirequest/9a7a77af-a58e-4e54-83c9-5daa96ccbf11",
+    "headers": {
+      "Authorization": "Bearer <access_token>"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "status": "verification-success",
+      "verifiedInformation": {
+        "email": "user@example.com",
+        "documentType": "passport",
+        "issueCountry": "GBR",
+        "name": "First Middle Last",
+        "dateOfBirth": "1990-01-01",
+        "dateOfExpiry": "2035-05-28",
+        "documentNumber": "0123456789",
+        "address": "0x1234abcd"
+      },
+      "links": [
+        {
+          "rel": "idDocumentFront",
+          "href": "https://api.civic.com/partner/piirequest/9a7a77af-a58e-4e54-83c9-5daa96ccbf11/evidence/front"
+        },
+        {
+          "rel": "idDocumentBack",
+          "href": "https://api.civic.com/partner/piirequest/9a7a77af-a58e-4e54-83c9-5daa96ccbf11/evidence/back"
+        }
+      ]
+    }
+  }
+}
