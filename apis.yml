@@ -10,7 +10,7 @@ description: >
   attributes), Civic has evolved into a broader agent security layer. The Hub MCP gateway exposes a single Streamable
   HTTP endpoint backed by 80+ pre-built MCP server integrations and is compatible with 23+ AI agent frameworks.
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
 - AI Agents
 - Authentication
