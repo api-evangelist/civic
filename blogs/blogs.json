@@ -1,0 +1,14 @@
+{
+  "repo": "civic",
+  "feeds": [
+    {
+      "source": "https://www.civic.com/blog/",
+      "feed_url": "https://www.civic.com/news",
+      "title": "Civic News",
+      "saved": 25,
+      "note": "No RSS/Atom feed resolved (all common feed paths returned 404). Posts scraped from the JS-rendered /news listing; blog URLs live under /news/. Per-post publish dates and summaries pulled from each post page's datePublished and og:description."
+    }
+  ],
+  "fetched": "2026-06-21T17:00:00Z",
+  "post_count": 25
+}
