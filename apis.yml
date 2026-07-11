@@ -127,6 +127,10 @@ apis:
   - type: SDKs
     url: https://github.com/civicteam/npm-civic-sip-api
 common:
+- type: DomainSecurity
+  url: security/civic-domain-security.yml
+- type: Authentication
+  url: authentication/civic-authentication.yml
 - type: OAuthScopes
   url: scopes/civic-scopes.yml
 - type: Website
