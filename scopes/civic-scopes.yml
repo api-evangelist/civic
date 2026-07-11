@@ -1,0 +1,16 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/civic-pass-customer-api.yaml
+schemes:
+- name: pass_auth
+  source: openapi/civic-pass-customer-api.yaml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://auth0.civic.com/oauth/token
+scopes:
+- scope: read:token
+  sources:
+  - openapi/civic-pass-customer-api.yaml
+- scope: write:token
+  sources:
+  - openapi/civic-pass-customer-api.yaml
