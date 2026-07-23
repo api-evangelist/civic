@@ -1,0 +1,123 @@
+openapi: 3.0.3
+info:
+  title: Civic Customer pass piirequest API
+  description: "The APIs described below enable Civic customers to issue and manage the Civic Pass for their dApp. To learn more about Civic Passes and their fundamentals, please refer to the main [documentation](https://docs.civic.com/).\n\n# Terminology\n\nIn the Customer API, the term `chain` refers to a blockchain programming model and the term `chainNetwork` to a network of that chain. For example, a \"Layer 2\" Ethereum network like Polygon is represented as `/pass/ethereum/polygonMainnet`.\n\n# Supported Chains\n\nThe Customer API supports the following chains and chain networks:\n- `solana:mainnet-beta`\n- `solana:devnet`\n- `ethereum:mainnet`\n- `ethereum:sepolia`\n- `ethereum:polygonAmoy`\n- `ethereum:polygonMainnet`\n- `ethereum:polygonZKEVM`\n- `ethereum:polygonZKEVMTestnet`\n- `ethereum:optimismSepolia`\n- `ethereum:optimismMainnet`\n- `ethereum:arbitrumSepolia`\n- `ethereum:arbitrumMainnet`\n- `ethereum:avalancheCChain`\n- `ethereum:avalancheCChainFuji`\n- `ethereum:xdcMainnet`\n- `ethereum:xdcApothem`\n- `ethereum:fantomMainnet`\n- `ethereum:fantomTestnet`\n- `ethereum:baseSepolia`\n- `ethereum:baseMainnet`\n- `ethereum:bscMainnet`\n- `ethereum:bscTestnet`\n- `ethereum:xlayerMainnet`\n- `ethereum:xlayerTestnet`\n- `ethereum:unichainMainnet`\n- `ethereum:unichainSepolia`\n- `ethereum:sonicMainnet`\n- `ethereum:sonicTestnet`\n\nIf your blockchain of choice is not listed above, feel free to reach out to us for more info on when support for your chain is planned.\n\n# Authentication\nAuthentication follows the [OAuth standard](https://oauth.net/2/). The Civic authentication endpoint is `https://auth0.civic.com/oauth/token`. The `grant_type` to request is  `client_credentials`.\n\nTo manage API authentication we recommend using one of the available [OAuth libraries](https://oauth.net/code/) for your platform.\n\n# Try it out!\nYou can try out the Civic Pass Customer API by using the following demo credentials to generate an auth token:\n- `client_id: dtVTGsKUlkPQ8UXKqSskS1HqNI3hERHT`,\n- `client_secret: 7DT722BjNlXUp8HVaV_ZjHzopq2Tr12doGB8sBYC-vhPo3Eh0HoidLVATFbxmwZ1`\n\nPlease keep in mind that these are shared credentials, i.e. others have access to the same Civic Passes and can for example freeze them.\n\nThe `gatekeeperNetwork` : `tgnuXXNMDLK8dy7Xm1TdeGyc95MDym4bvAQCwcW21Bf` should be used with these credentials. That is Civic's sandbox pass.\n\nThe demo pass is only supported on testnets. The current list is:\n  - `solana:devnet`\n  - `ethereum:polygonAmoy`\n  - `ethereum:sepolia`\n  - `ethereum:baseSepolia`\n  - `ethereum:arbitrumSepolia`\n  - `ethereum:optimismSepolia`\n  - `ethereum:bscTestnet`\n  - `ethereum:xdcApothem`\n  - `ethereum:xlayerTestnet`\n  - `ethereum:avalancheCChainFuji`\n  - `ethereum:unichainSepolia`\n  - `ethereum:sonicTestnet`"
+  termsOfService: https://www.civic.com/legal/terms-of-service-civic-pass-v1/
+  contact:
+    email: devsupport@civic.com
+  version: 1.0.0
+servers:
+- url: https://api.civic.com/partner
+tags:
+- name: piirequest
+  description: Get user PII and approve / reject receipt of PII
+paths:
+  /piirequest/{scopeRequestId}:
+    get:
+      tags:
+      - piirequest
+      summary: Get the user's PII using a ScopeRequestId provided by Civic
+      operationId: getPii
+      description: After the user's PII has been delivered to Civic, we give you an ID (scopeRequestId) that can be used to retrieve the user's PII before issuing the Civic Pass.
+      parameters:
+      - name: scopeRequestId
+        in: path
+        description: The ID that was provided to you by Civic after the user has submitted their PII
+        required: true
+        example: 9a7a77af-a58e-4e54-83c9-5daa96ccbf11
+        schema:
+          type: string
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetPiiResponse'
+  /piirequest/{scopeRequestId}/status:
+    put:
+      tags:
+      - piirequest
+      summary: Approve or Reject receipt of PII, to allow or block issuance of the user's Civic Pass.
+      operationId: updatePiiReceipt
+      description: After you reviewed the user's PII returned by the GET /piirequest/{scopeRequestId} endpoint, you can approve or reject the user's Civic Pass by calling this endpoint.
+      parameters:
+      - name: scopeRequestId
+        in: path
+        description: The ID that was provided to you by Civic after the user has submitted their PII
+        required: true
+        example: 9a7a77af-a58e-4e54-83c9-5daa96ccbf11
+        schema:
+          type: string
+      - name: status
+        in: body
+        description: Set this to 'partner-pass' to approve the issuance of the user's Civic Pass, or 'partner-fail' to reject it.
+        schema:
+          type: string
+          enum:
+          - partner-pass
+          - partner-fail
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                status:
+                  type: string
+                  enum:
+                  - partner-pass
+                  - partner-fail
+                  description: Whether to approve (pass) or reject (fail) the issuance of the user's Civic Pass.
+              required:
+              - status
+      responses:
+        200:
+          description: OK
+components:
+  schemas:
+    GetPiiResponse:
+      type: object
+      properties:
+        status:
+          description: The status of this PII request. The PII can be retrieved once this has reached 'verification-success'
+          type: string
+          enum:
+          - awaiting-user
+          - user-acknowledged
+          - verification-success
+          - verification-failed
+          - user-cancelled
+          - partner-pass
+          - partner-fail
+        verifiedInformation:
+          type: object
+          description: A set of all the user's PII that Civic could verify. The exact set of fields will differ depending on your pass configuration.
+          example:
+            email: user@example.com
+            documentType: passport
+            issueCountry: GBR
+            name: First Middle Last
+            dateOfBirth: '1990-01-01'
+            dateOfExpiry: '2035-05-28'
+            documentNumber: 0123456789
+            address: '0x1234abcd'
+        links:
+          type: array
+          description: A list of the evidence item URLs collected from the user.
+          items:
+            type: object
+            properties:
+              rel:
+                type: string
+                example: idDocumentFront
+              href:
+                type: string
+                example: https://api.civic.com/partner/piirequest/9a7a77af-a58e-4e54-83c9-5daa96ccbf11
+  securitySchemes:
+    pass_auth:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://auth0.civic.com/oauth/token
+          scopes: {}
