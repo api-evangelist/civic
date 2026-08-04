@@ -1,0 +1,230 @@
+{
+  "info": {
+    "_postman_id": "f3a12a55-15e2-419d-820c-e6fb27d87936",
+    "name": "Civic Customer pass piirequest API",
+    "description": "The APIs described below enable Civic customers to issue and manage the Civic Pass for their dApp. To learn more about Civic Passes and their fundamentals, please refer to the main [documentation](https://docs.civic.com/).\n\n# Terminology\n\nIn the Customer API, the term `chain` refers to a blockchain programming model and the term `chainNetwork` to a network of that chain. For example, a \"Layer 2\" Ethereum network like Polygon is represented as `/pass/ethereum/polygonMainnet`.\n\n# Supported Chains\n\nThe Customer API supports the following chains and chain networks:\n- `solana:mainnet-beta`\n- `solana:devnet`\n- `ethereum:mainnet`\n- `ethereum:sepolia`\n- `ethereum:polygonAmoy`\n- `ethereum:polygonMainnet`\n- `ethereum:polygonZKEVM`\n- `ethereum:polygonZKEVMTestnet`\n- `ethereum:optimismSepolia`\n- `ethereum:optimismMainnet`\n- `ethereum:arbitrumSepolia`\n- `ethereum:arbitrumMainnet`\n- `ethereum:avalancheCChain`\n- `ethereum:avalancheCChainFuji`\n- `ethereum:xdcMainnet`\n- `ethereum:xdcApothem`\n- `ethereum:fantomMainnet`\n- `ethereum:fantomTestnet`\n- `ethereum:baseSepolia`\n- `ethereum:baseMainnet`\n- `ethereum:bscMainnet`\n- `ethereum:bscTestnet`\n- `ethereum:xlayerMainnet`\n- `ethereum:xlayerTestnet`\n- `ethereum:unichainMainnet`\n- `ethereum:unichainSepolia`\n- `ethereum:sonicMainnet`\n- `ethereum:sonicTestnet`\n\nIf your blockchain of choice is not listed above, feel free to reach out to us for more info on when support for your chain is planned.\n\n# Authentication\nAuthentication follows the [OAuth standard](https://oauth.net/2/). The Civic authentication endpoint is `https://auth0.civic.com/oauth/token`. The `grant_type` to request is  `client_credentials`.\n\nTo manage API authentication we recommend using one of the available [OAuth libraries](https://oauth.net/code/) for your platform.\n\n# Try it out!\nYou can try out the Civic Pass Customer API by using the following demo credentials to generate an auth token:\n- `client_id: dtVTGsKUlkPQ8UXKqSskS1HqNI3hERHT`,\n- `client_secret: 7DT722BjNlXUp8HVaV_ZjHzopq2Tr12doGB8sBYC-vhPo3Eh0HoidLVATFbxmwZ1`\n\nPlease keep in mind that these are shared credentials, i.e. others have access to the same Civic Passes and can for example freeze them.\n\nThe `gatekeeperNetwork` : `tgnuXXNMDLK8dy7Xm1TdeGyc95MDym4bvAQCwcW21Bf` should be used with these credentials. That is Civic's sandbox pass.\n\nThe demo pass is only supported on testnets. The current list is:\n  - `solana:devnet`\n  - `ethereum:polygonAmoy`\n  - `ethereum:sepolia`\n  - `ethereum:baseSepolia`\n  - `ethereum:arbitrumSepolia`\n  - `ethereum:optimismSepolia`\n  - `ethereum:bscTestnet`\n  - `ethereum:xdcApothem`\n  - `ethereum:xlayerTestnet`\n  - `ethereum:avalancheCChainFuji`\n  - `ethereum:unichainSepolia`\n  - `ethereum:sonicTestnet`\n\nContact Support:\n Email: devsupport@civic.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:21:58.000Z",
+    "updatedAt": "2026-07-28T01:21:58.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-f3a12a55-15e2-419d-820c-e6fb27d87936"
+  },
+  "item": [
+    {
+      "name": "piirequest",
+      "item": [
+        {
+          "name": "{scopeRequestId}",
+          "item": [
+            {
+              "name": "status",
+              "item": [
+                {
+                  "name": "Approve or Reject receipt of PII, to allow or block issuance of the user's Civic Pass.",
+                  "id": "5e02007c-3cc9-4bf4-99fc-070081801db4",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"status\": \"partner-fail\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/piirequest/:scopeRequestId/status",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "piirequest",
+                        ":scopeRequestId",
+                        "status"
+                      ],
+                      "variable": [
+                        {
+                          "id": "9b445011-228a-4ed5-bd43-d4ad931208e8",
+                          "key": "scopeRequestId",
+                          "value": "<string>",
+                          "description": "(Required) The ID that was provided to you by Civic after the user has submitted their PII"
+                        }
+                      ]
+                    },
+                    "description": "After you reviewed the user's PII returned by the GET /piirequest/{scopeRequestId} endpoint, you can approve or reject the user's Civic Pass by calling this endpoint."
+                  },
+                  "response": [
+                    {
+                      "id": "731d1f22-e37b-4d35-ba5a-01a83d43dd1c",
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"status\": \"partner-fail\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/piirequest/:scopeRequestId/status",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "piirequest",
+                            ":scopeRequestId",
+                            "status"
+                          ],
+                          "variable": [
+                            {
+                              "key": "scopeRequestId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T01:21:59.000Z",
+                      "updatedAt": "2026-07-28T01:21:59.000Z",
+                      "uid": "35240-731d1f22-e37b-4d35-ba5a-01a83d43dd1c"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:21:59.000Z",
+                  "updatedAt": "2026-07-28T01:21:59.000Z",
+                  "uid": "35240-5e02007c-3cc9-4bf4-99fc-070081801db4"
+                }
+              ],
+              "id": "b77e70e7-2139-44f3-b4d1-0835d610dc4a",
+              "createdAt": "2026-07-28T01:21:59.000Z",
+              "updatedAt": "2026-07-28T01:21:59.000Z",
+              "uid": "35240-b77e70e7-2139-44f3-b4d1-0835d610dc4a"
+            },
+            {
+              "name": "Get the user's PII using a ScopeRequestId provided by Civic",
+              "id": "8b2601f5-812a-4af8-ab84-80c93b56ad1d",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/piirequest/:scopeRequestId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "piirequest",
+                    ":scopeRequestId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "5e71535c-61ca-47de-8edc-f5d6d71202b5",
+                      "key": "scopeRequestId",
+                      "value": "<string>",
+                      "description": "(Required) The ID that was provided to you by Civic after the user has submitted their PII"
+                    }
+                  ]
+                },
+                "description": "After the user's PII has been delivered to Civic, we give you an ID (scopeRequestId) that can be used to retrieve the user's PII before issuing the Civic Pass."
+              },
+              "response": [
+                {
+                  "id": "5b2b94ce-8cbe-42d0-91d1-472fc8b539e4",
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/piirequest/:scopeRequestId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "piirequest",
+                        ":scopeRequestId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "scopeRequestId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"status\": \"partner-pass\",\n  \"verifiedInformation\": {},\n  \"links\": [\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\"\n    },\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T01:21:59.000Z",
+                  "updatedAt": "2026-07-28T01:21:59.000Z",
+                  "uid": "35240-5b2b94ce-8cbe-42d0-91d1-472fc8b539e4"
+                }
+              ],
+              "createdAt": "2026-07-28T01:21:59.000Z",
+              "updatedAt": "2026-07-28T01:21:59.000Z",
+              "uid": "35240-8b2601f5-812a-4af8-ab84-80c93b56ad1d"
+            }
+          ],
+          "id": "86175358-e426-4f7b-985d-f040261df365",
+          "createdAt": "2026-07-28T01:21:59.000Z",
+          "updatedAt": "2026-07-28T01:21:59.000Z",
+          "uid": "35240-86175358-e426-4f7b-985d-f040261df365"
+        }
+      ],
+      "id": "23b4053a-3b0d-4afa-8ded-df84cafb4800",
+      "createdAt": "2026-07-28T01:21:59.000Z",
+      "updatedAt": "2026-07-28T01:21:59.000Z",
+      "uid": "35240-23b4053a-3b0d-4afa-8ded-df84cafb4800"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.civic.com/partner"
+    }
+  ]
+}

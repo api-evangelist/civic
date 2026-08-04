@@ -1,0 +1,16 @@
+{
+  "provider": "civic",
+  "sources": [
+    "civic-pass-api-openapi.yml",
+    "civic-piirequest-api-openapi.yml"
+  ],
+  "outputs": [
+    "civic-pass-api-openapi.yml",
+    "civic-piirequest-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
