@@ -145,6 +145,9 @@ apis:
   - type: SDKs
     url: https://github.com/civicteam/npm-civic-sip-api
 common:
+- type: License
+  name: MIT
+  url: https://github.com/civicteam/typescript-sdk/blob/main/LICENSE
 - type: PostmanWorkspace
   url: https://www.postman.com/kinlaneapi/civic/overview
 - type: AgenticAccess
