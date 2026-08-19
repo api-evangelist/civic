@@ -1,0 +1,204 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Civic Customer pass API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "pass",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Civic Passes",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.civic.com/partner/pass",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://auth0.civic.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Returns a list of all Civic Passes you have issued. Optionally filtered by the Civic Pass attributes. A pass may take a few seconds to a few minutes to show up here after issuing, depending on blockchain confirmation times."
+        },
+        {
+          "info": {
+            "name": "Issue a Civic Pass",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.civic.com/partner/pass/:chain/:chainNetwork",
+            "params": [
+              {
+                "name": "chain",
+                "value": "ethereum",
+                "type": "path",
+                "description": "The type of blockchain that the Civic Pass was issued on."
+              },
+              {
+                "name": "chainNetwork",
+                "value": "sepolia",
+                "type": "path",
+                "description": "The blockchain network"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://auth0.civic.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Issue a Civic Pass to a user's wallet. This action is asynchronous, i.e. it does not wait for the Civic Pass to be confirmed on-chain before returning."
+        },
+        {
+          "info": {
+            "name": "Retrieve a Civic Pass.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.civic.com/partner/pass/:chain/:chainNetwork/:wallet",
+            "params": [
+              {
+                "name": "chain",
+                "value": "ethereum",
+                "type": "path",
+                "description": "The blockchain type that the Civic Pass was issued on."
+              },
+              {
+                "name": "wallet",
+                "value": "0xEA5Ce8F9C81b681876DC713d33371c3E262A5888",
+                "type": "path",
+                "description": "The user's wallet the Civic Pass was issued to."
+              },
+              {
+                "name": "chainNetwork",
+                "value": "sepolia",
+                "type": "path",
+                "description": "The blockchain network"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://auth0.civic.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieve the full details about a Civic Pass you issued, including a log of all events associated with the specific pass. A pass may take a few seconds to a few minutes to show up here after issuing, depending on blockchain confirmation times."
+        },
+        {
+          "info": {
+            "name": "Update a Civic Pass",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.civic.com/partner/pass/:chain/:chainNetwork/:wallet",
+            "params": [
+              {
+                "name": "chain",
+                "value": "ethereum",
+                "type": "path",
+                "description": "The blockchain type that the Civic Pass was issued on."
+              },
+              {
+                "name": "wallet",
+                "value": "0xEA5Ce8F9C81b681876DC713d33371c3E262A5888",
+                "type": "path",
+                "description": "The user's wallet the Civic Pass was issued to."
+              },
+              {
+                "name": "chainNetwork",
+                "value": "sepolia",
+                "type": "path",
+                "description": "The blockchain network"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://auth0.civic.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Updates either the status or the expiration timestamp of a Civic Pass. This action is asynchronous, i.e. it does not wait for updates to be confirmed on-chain before returning. To immediately expire a pass, for example to force a user to refresh, set an expiration data a couple of second in the future."
+        },
+        {
+          "info": {
+            "name": "Revoke a Civic Pass",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.civic.com/partner/pass/:chain/:chainNetwork/:wallet",
+            "params": [
+              {
+                "name": "chain",
+                "value": "ethereum",
+                "type": "path",
+                "description": "The blockchain type that the Civic Pass was issued on."
+              },
+              {
+                "name": "wallet",
+                "value": "0xEA5Ce8F9C81b681876DC713d33371c3E262A5888",
+                "type": "path",
+                "description": "The user's wallet the Civic Pass was issued to."
+              },
+              {
+                "name": "chainNetwork",
+                "value": "sepolia",
+                "type": "path",
+                "description": "The blockchain network"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://auth0.civic.com/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Revoking a Civic Pass is **irreversible**. After the Civic Pass has been revoked, it is not possible to issue a new Civic Pass to the same {chain, wallet, network} combination."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

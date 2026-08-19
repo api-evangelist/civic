@@ -1,0 +1,911 @@
+{
+  "item": [
+    {
+      "id": "87c6c069-037c-4d2e-b1a6-8e910df62d0f",
+      "name": "pass",
+      "description": {
+        "content": "Issue and manage Civic Passes",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f5f1ff47-a95b-473b-98d4-3aa8d7373dac",
+          "name": "List Civic Passes",
+          "request": {
+            "name": "List Civic Passes",
+            "description": {
+              "content": "Returns a list of all Civic Passes you have issued. Optionally filtered by the Civic Pass attributes. A pass may take a few seconds to a few minutes to show up here after issuing, depending on blockchain confirmation times.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "pass"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://auth0.civic.com/oauth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"limit\": 20,\n  \"skip\": 0,\n  \"filter\": {\n    \"state\": \"<string>\",\n    \"walletAddress\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ac34d44e-41d4-4aba-845c-dcf2757fca57",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pass"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"limit\": 20,\n  \"skip\": 0,\n  \"filter\": {\n    \"state\": \"<string>\",\n    \"walletAddress\": \"4v4PL5bMZXXvQB3mvWPXLvqfJpjJmPRnPrmENnUESQQQ\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"records\": [\n    {\n      \"chain\": {\n        \"type\": \"solana\",\n        \"network\": \"baseSepolia\"\n      },\n      \"gatekeeperNetwork\": \"tgnuXXNMDLK8dy7Xm1TdeGyc95MDym4bvAQCwcW21Bf\",\n      \"walletAddress\": \"4v4PL5bMZXXvQB3mvWPXLvqfJpjJmPRnPrmENnUESQQQ\",\n      \"events\": [\n        {\n          \"eventType\": \"TOKEN_REVOKED\",\n          \"timestamp\": 1677588899,\n          \"transaction\": {\n            \"identifier\": \"4GWazp2AqMmxkE6GKCoYf9rbgFL6eDTuMx9z7719eccSeCEYu9hiCvmcr9cK6ioiTUGZzvcWf6iB7fd3YCg39PT6\",\n            \"status\": \"failed\"\n          }\n        },\n        {\n          \"eventType\": \"TOKEN_EXPIRY_CHANGED\",\n          \"timestamp\": 1677588899,\n          \"transaction\": {\n            \"identifier\": \"4GWazp2AqMmxkE6GKCoYf9rbgFL6eDTuMx9z7719eccSeCEYu9hiCvmcr9cK6ioiTUGZzvcWf6iB7fd3YCg39PT6\",\n            \"status\": \"failed\"\n          }\n        }\n      ],\n      \"id\": \"63fdf96c58f1ae40a26a89be\",\n      \"onChainState\": \"REVOKED\",\n      \"state\": \"REVOKED\"\n    },\n    {\n      \"chain\": {\n        \"type\": \"ethereum\",\n        \"network\": \"xlayerTestnet\"\n      },\n      \"gatekeeperNetwork\": \"tgnuXXNMDLK8dy7Xm1TdeGyc95MDym4bvAQCwcW21Bf\",\n      \"walletAddress\": \"4v4PL5bMZXXvQB3mvWPXLvqfJpjJmPRnPrmENnUESQQQ\",\n      \"events\": [\n        {\n          \"eventType\": \"TOKEN_REVOKED_INITIATED\",\n          \"timestamp\": 1677588899,\n          \"transaction\": {\n            \"identifier\": \"4GWazp2AqMmxkE6GKCoYf9rbgFL6eDTuMx9z7719eccSeCEYu9hiCvmcr9cK6ioiTUGZzvcWf6iB7fd3YCg39PT6\",\n            \"status\": \"confirmed\"\n          }\n        },\n        {\n          \"eventType\": \"TOKEN_FROZEN_INITIATED\",\n          \"timestamp\": 1677588899,\n          \"transaction\": {\n            \"identifier\": \"4GWazp2AqMmxkE6GKCoYf9rbgFL6eDTuMx9z7719eccSeCEYu9hiCvmcr9cK6ioiTUGZzvcWf6iB7fd3YCg39PT6\",\n            \"status\": \"confirmed\"\n          }\n        }\n      ],\n      \"id\": \"63fdf96c58f1ae40a26a89be\",\n      \"onChainState\": \"REVOKED\",\n      \"state\": \"REVOKED\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "15ae72ff-ced8-43a6-b8b4-19d822356225",
+          "name": "Issue a Civic Pass",
+          "request": {
+            "name": "Issue a Civic Pass",
+            "description": {
+              "content": "Issue a Civic Pass to a user's wallet. This action is asynchronous, i.e. it does not wait for the Civic Pass to be confirmed on-chain before returning.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "pass",
+                ":chain",
+                ":chainNetwork"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "chain",
+                  "description": "(Required) The type of blockchain that the Civic Pass was issued on."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "chainNetwork",
+                  "description": "(Required) The blockchain network"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://auth0.civic.com/oauth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"walletAddress\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a7537696-755e-4213-8061-db9a399a873f",
+              "name": "The issuance of the Civic Pass has been initiated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pass",
+                    ":chain",
+                    ":chainNetwork"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chain",
+                      "description": "(Required) The type of blockchain that the Civic Pass was issued on."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chainNetwork",
+                      "description": "(Required) The blockchain network"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"walletAddress\": \"0xEA5Ce8F9C81b681876DC713d33371c3E262A5888\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"chain\": {\n    \"type\": \"ethereum\",\n    \"network\": \"sepolia\"\n  },\n  \"gatekeeperNetwork\": \"tgnuXXNMDLK8dy7Xm1TdeGyc95MDym4bvAQCwcW21Bf\",\n  \"walletAddress\": \"4v4PL5bMZXXvQB3mvWPXLvqfJpjJmPRnPrmENnUESQQQ\",\n  \"events\": [\n    {\n      \"eventType\": \"TOKEN_ISSUED\",\n      \"timestamp\": 1677588899,\n      \"transaction\": {\n        \"identifier\": \"4GWazp2AqMmxkE6GKCoYf9rbgFL6eDTuMx9z7719eccSeCEYu9hiCvmcr9cK6ioiTUGZzvcWf6iB7fd3YCg39PT6\",\n        \"status\": \"sent\"\n      }\n    },\n    {\n      \"eventType\": \"TOKEN_FROZEN_INITIATED\",\n      \"timestamp\": 1677588899,\n      \"transaction\": {\n        \"identifier\": \"4GWazp2AqMmxkE6GKCoYf9rbgFL6eDTuMx9z7719eccSeCEYu9hiCvmcr9cK6ioiTUGZzvcWf6iB7fd3YCg39PT6\",\n        \"status\": \"failed\"\n      }\n    }\n  ],\n  \"id\": \"63fdf96c58f1ae40a26a89be\",\n  \"onChainState\": \"REVOKED\",\n  \"state\": \"REVOKED\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c6088957-7ac5-43f3-a0d6-13eae03b6ab5",
+              "name": "Client error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pass",
+                    ":chain",
+                    ":chainNetwork"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chain",
+                      "description": "(Required) The type of blockchain that the Civic Pass was issued on."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chainNetwork",
+                      "description": "(Required) The blockchain network"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"walletAddress\": \"0xEA5Ce8F9C81b681876DC713d33371c3E262A5888\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "902c8215-6f7f-4009-a027-09944dee2880",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pass",
+                    ":chain",
+                    ":chainNetwork"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chain",
+                      "description": "(Required) The type of blockchain that the Civic Pass was issued on."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chainNetwork",
+                      "description": "(Required) The blockchain network"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"walletAddress\": \"0xEA5Ce8F9C81b681876DC713d33371c3E262A5888\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0fac0fad-5046-4556-b3e7-0c3746d394c0",
+          "name": "Retrieve a Civic Pass.",
+          "request": {
+            "name": "Retrieve a Civic Pass.",
+            "description": {
+              "content": "Retrieve the full details about a Civic Pass you issued, including a log of all events associated with the specific pass. A pass may take a few seconds to a few minutes to show up here after issuing, depending on blockchain confirmation times.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "pass",
+                ":chain",
+                ":chainNetwork",
+                ":wallet"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "chain",
+                  "description": "(Required) The blockchain type that the Civic Pass was issued on."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "wallet",
+                  "description": "(Required) The user's wallet the Civic Pass was issued to."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "chainNetwork",
+                  "description": "(Required) The blockchain network"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://auth0.civic.com/oauth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "f9864259-3664-4df2-9797-228821391878",
+              "name": "The Civic Pass associated with the given wallet.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pass",
+                    ":chain",
+                    ":chainNetwork",
+                    ":wallet"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chain",
+                      "description": "(Required) The blockchain type that the Civic Pass was issued on."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "wallet",
+                      "description": "(Required) The user's wallet the Civic Pass was issued to."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chainNetwork",
+                      "description": "(Required) The blockchain network"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"chain\": {\n    \"type\": \"ethereum\",\n    \"network\": \"sepolia\"\n  },\n  \"gatekeeperNetwork\": \"tgnuXXNMDLK8dy7Xm1TdeGyc95MDym4bvAQCwcW21Bf\",\n  \"walletAddress\": \"4v4PL5bMZXXvQB3mvWPXLvqfJpjJmPRnPrmENnUESQQQ\",\n  \"events\": [\n    {\n      \"eventType\": \"TOKEN_ISSUED\",\n      \"timestamp\": 1677588899,\n      \"transaction\": {\n        \"identifier\": \"4GWazp2AqMmxkE6GKCoYf9rbgFL6eDTuMx9z7719eccSeCEYu9hiCvmcr9cK6ioiTUGZzvcWf6iB7fd3YCg39PT6\",\n        \"status\": \"sent\"\n      }\n    },\n    {\n      \"eventType\": \"TOKEN_FROZEN_INITIATED\",\n      \"timestamp\": 1677588899,\n      \"transaction\": {\n        \"identifier\": \"4GWazp2AqMmxkE6GKCoYf9rbgFL6eDTuMx9z7719eccSeCEYu9hiCvmcr9cK6ioiTUGZzvcWf6iB7fd3YCg39PT6\",\n        \"status\": \"failed\"\n      }\n    }\n  ],\n  \"id\": \"63fdf96c58f1ae40a26a89be\",\n  \"onChainState\": \"REVOKED\",\n  \"state\": \"REVOKED\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5d426a90-25db-480a-ba05-b6b13b15550b",
+              "name": "No Civic pass is associatied with the given wallet.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pass",
+                    ":chain",
+                    ":chainNetwork",
+                    ":wallet"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chain",
+                      "description": "(Required) The blockchain type that the Civic Pass was issued on."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "wallet",
+                      "description": "(Required) The user's wallet the Civic Pass was issued to."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chainNetwork",
+                      "description": "(Required) The blockchain network"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d916fc48-0338-44c1-9d63-9fc40eff7bf2",
+          "name": "Update a Civic Pass",
+          "request": {
+            "name": "Update a Civic Pass",
+            "description": {
+              "content": "Updates either the status or the expiration timestamp of a Civic Pass. This action is asynchronous, i.e. it does not wait for updates to be confirmed on-chain before returning. To immediately expire a pass, for example to force a user to refresh, set an expiration data a couple of second in the future.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "pass",
+                ":chain",
+                ":chainNetwork",
+                ":wallet"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "chain",
+                  "description": "(Required) The blockchain type that the Civic Pass was issued on."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "wallet",
+                  "description": "(Required) The user's wallet the Civic Pass was issued to."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "chainNetwork",
+                  "description": "(Required) The blockchain network"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://auth0.civic.com/oauth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"state\": \"<string>\",\n  \"expiryTimestamp\": \"<number>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "97bc1c4d-d122-45ff-877f-27a18e2fe452",
+              "name": "ok",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pass",
+                    ":chain",
+                    ":chainNetwork",
+                    ":wallet"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chain",
+                      "description": "(Required) The blockchain type that the Civic Pass was issued on."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "wallet",
+                      "description": "(Required) The user's wallet the Civic Pass was issued to."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chainNetwork",
+                      "description": "(Required) The blockchain network"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"state\": \"<string>\",\n  \"expiryTimestamp\": 1677593295\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ok\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5c7ac0a1-afc1-470c-b6e4-4b4c1d100d77",
+          "name": "Revoke a Civic Pass",
+          "request": {
+            "name": "Revoke a Civic Pass",
+            "description": {
+              "content": "Revoking a Civic Pass is **irreversible**. After the Civic Pass has been revoked, it is not possible to issue a new Civic Pass to the same {chain, wallet, network} combination.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "pass",
+                ":chain",
+                ":chainNetwork",
+                ":wallet"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "chain",
+                  "description": "(Required) The blockchain type that the Civic Pass was issued on."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "wallet",
+                  "description": "(Required) The user's wallet the Civic Pass was issued to."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "chainNetwork",
+                  "description": "(Required) The blockchain network"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://auth0.civic.com/oauth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "72562961-2b7f-4b4e-95bd-b567d6bacfe9",
+              "name": "The revocation has been initiated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pass",
+                    ":chain",
+                    ":chainNetwork",
+                    ":wallet"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chain",
+                      "description": "(Required) The blockchain type that the Civic Pass was issued on."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "wallet",
+                      "description": "(Required) The user's wallet the Civic Pass was issued to."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "chainNetwork",
+                      "description": "(Required) The blockchain network"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.civic.com/partner",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "5582b153-5bbb-4d84-805b-083103686953",
+    "name": "Civic Customer pass API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The APIs described below enable Civic customers to issue and manage the Civic Pass for their dApp. To learn more about Civic Passes and their fundamentals, please refer to the main [documentation](https://docs.civic.com/).\n\n# Terminology\n\nIn the Customer API, the term `chain` refers to a blockchain programming model and the term `chainNetwork` to a network of that chain. For example, a \"Layer 2\" Ethereum network like Polygon is represented as `/pass/ethereum/polygonMainnet`.\n\n# Supported Chains\n\nThe Customer API supports the following chains and chain networks:\n- `solana:mainnet-beta`\n- `solana:devnet`\n- `ethereum:mainnet`\n- `ethereum:sepolia`\n- `ethereum:polygonAmoy`\n- `ethereum:polygonMainnet`\n- `ethereum:polygonZKEVM`\n- `ethereum:polygonZKEVMTestnet`\n- `ethereum:optimismSepolia`\n- `ethereum:optimismMainnet`\n- `ethereum:arbitrumSepolia`\n- `ethereum:arbitrumMainnet`\n- `ethereum:avalancheCChain`\n- `ethereum:avalancheCChainFuji`\n- `ethereum:xdcMainnet`\n- `ethereum:xdcApothem`\n- `ethereum:fantomMainnet`\n- `ethereum:fantomTestnet`\n- `ethereum:baseSepolia`\n- `ethereum:baseMainnet`\n- `ethereum:bscMainnet`\n- `ethereum:bscTestnet`\n- `ethereum:xlayerMainnet`\n- `ethereum:xlayerTestnet`\n- `ethereum:unichainMainnet`\n- `ethereum:unichainSepolia`\n- `ethereum:sonicMainnet`\n- `ethereum:sonicTestnet`\n\nIf your blockchain of choice is not listed above, feel free to reach out to us for more info on when support for your chain is planned.\n\n# Authentication\nAuthentication follows the [OAuth standard](https://oauth.net/2/). The Civic authentication endpoint is `https://auth0.civic.com/oauth/token`. The `grant_type` to request is  `client_credentials`.\n\nTo manage API authentication we recommend using one of the available [OAuth libraries](https://oauth.net/code/) for your platform.\n\n# Try it out!\nYou can try out the Civic Pass Customer API by using the following demo credentials to generate an auth token:\n- `client_id: dtVTGsKUlkPQ8UXKqSskS1HqNI3hERHT`,\n- `client_secret: 7DT722BjNlXUp8HVaV_ZjHzopq2Tr12doGB8sBYC-vhPo3Eh0HoidLVATFbxmwZ1`\n\nPlease keep in mind that these are shared credentials, i.e. others have access to the same Civic Passes and can for example freeze them.\n\nThe `gatekeeperNetwork` : `tgnuXXNMDLK8dy7Xm1TdeGyc95MDym4bvAQCwcW21Bf` should be used with these credentials. That is Civic's sandbox pass.\n\nThe demo pass is only supported on testnets. The current list is:\n  - `solana:devnet`\n  - `ethereum:polygonAmoy`\n  - `ethereum:sepolia`\n  - `ethereum:baseSepolia`\n  - `ethereum:arbitrumSepolia`\n  - `ethereum:optimismSepolia`\n  - `ethereum:bscTestnet`\n  - `ethereum:xdcApothem`\n  - `ethereum:xlayerTestnet`\n  - `ethereum:avalancheCChainFuji`\n  - `ethereum:unichainSepolia`\n  - `ethereum:sonicTestnet`\n\nContact Support:\n Email: devsupport@civic.com",
+      "type": "text/plain"
+    }
+  }
+}

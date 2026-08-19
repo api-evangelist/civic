@@ -1,0 +1,60 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Civic Customer pass piirequest API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "piirequest",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get the user's PII using a ScopeRequestId provided by Civic",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.civic.com/partner/piirequest/:scopeRequestId",
+            "params": [
+              {
+                "name": "scopeRequestId",
+                "value": "9a7a77af-a58e-4e54-83c9-5daa96ccbf11",
+                "type": "path",
+                "description": "The ID that was provided to you by Civic after the user has submitted their PII"
+              }
+            ]
+          },
+          "docs": "After the user's PII has been delivered to Civic, we give you an ID (scopeRequestId) that can be used to retrieve the user's PII before issuing the Civic Pass."
+        },
+        {
+          "info": {
+            "name": "Approve or Reject receipt of PII, to allow or block issuance of the user's Civic Pass.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.civic.com/partner/piirequest/:scopeRequestId/status",
+            "params": [
+              {
+                "name": "scopeRequestId",
+                "value": "9a7a77af-a58e-4e54-83c9-5daa96ccbf11",
+                "type": "path",
+                "description": "The ID that was provided to you by Civic after the user has submitted their PII"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "After you reviewed the user's PII returned by the GET /piirequest/{scopeRequestId} endpoint, you can approve or reject the user's Civic Pass by calling this endpoint."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
