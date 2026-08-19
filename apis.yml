@@ -39,7 +39,7 @@ tags:
 url: https://raw.githubusercontent.com/api-evangelist/civic/refs/heads/main/apis.yml
 created: '2026-06-14'
 modified: '2026-06-14'
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 apis:
 - aid: civic:civic-hub-mcp-api
   name: Civic Hub MCP API
