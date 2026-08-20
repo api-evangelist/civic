@@ -31,6 +31,17 @@ tags:
 - Identity Verification
 - KYC
 - MCP
+- Security
+- Solana
+- Web3
+- Wallets
+tags_raw:
+- AI Agents
+- Authentication
+- Digital Identity
+- Identity Verification
+- KYC
+- MCP
 - OAuth
 - Security
 - Solana
@@ -87,6 +98,13 @@ apis:
   - Authentication
   - Embedded Wallets
   - MCP
+  - PKCE
+  - Solana
+  - Web3
+  tags_raw:
+  - Authentication
+  - Embedded Wallets
+  - MCP
   - OAuth
   - PKCE
   - Solana
@@ -114,6 +132,8 @@ apis:
   humanURL: https://docs.civic.com/
   baseURL: https://app.civic.com/hub/mcp
   tags:
+  - Pass
+  tags_raw:
   - pass
   properties:
   - type: OpenAPI
