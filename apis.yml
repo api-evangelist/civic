@@ -146,7 +146,7 @@ apis:
   humanURL: https://docs.civic.com/
   baseURL: https://app.civic.com/hub/mcp
   tags:
-  - Pass
+  - pass
   tags_raw:
   - pass
   properties:
