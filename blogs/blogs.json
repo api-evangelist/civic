@@ -7,9 +7,14 @@
       "title": "Civic News",
       "saved": 0,
       "note": "No RSS/Atom feed resolved (all common feed paths returned 404). Posts scraped from the JS-rendered /news listing; blog URLs live under /news/. Per-post publish dates and summaries pulled from each post page's datePublished and og:description. 2026-07-04 run: page is client-rendered, no dates recoverable via WebFetch/curl this pass.",
-      "error": "parse_failed"
+      "error": "parse_failed",
+      "nature": "vendor-blog",
+      "nature_basis": "path_blog"
     }
   ],
   "fetched": "2026-08-30T22:05:13Z",
-  "post_count": 25
+  "post_count": 25,
+  "feed_nature": "vendor-blog",
+  "feed_nature_basis": "path_blog",
+  "feed_nature_note": "Whether these posts are the vendor publishing or its support community, decided on the URL path grammar of the saved posts -- not the hostname, which carries both on Khoros, and not author diversity, which flags large vendor blogs as forums. 'undetermined' means undetermined."
 }
