@@ -1,7 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Civic Customer pass API
-  description: "The APIs described below enable Civic customers to issue and manage the Civic Pass for their dApp. To learn more about Civic Passes and their fundamentals, please refer to the main [documentation](https://docs.civic.com/).\n\n# Terminology\n\nIn the Customer API, the term `chain` refers to a blockchain programming model and the term `chainNetwork` to a network of that chain. For example, a \"Layer 2\" Ethereum network like Polygon is represented as `/pass/ethereum/polygonMainnet`.\n\n# Supported Chains\n\nThe Customer API supports the following chains and chain networks:\n- `solana:mainnet-beta`\n- `solana:devnet`\n- `ethereum:mainnet`\n- `ethereum:sepolia`\n- `ethereum:polygonAmoy`\n- `ethereum:polygonMainnet`\n- `ethereum:polygonZKEVM`\n- `ethereum:polygonZKEVMTestnet`\n- `ethereum:optimismSepolia`\n- `ethereum:optimismMainnet`\n- `ethereum:arbitrumSepolia`\n- `ethereum:arbitrumMainnet`\n- `ethereum:avalancheCChain`\n- `ethereum:avalancheCChainFuji`\n- `ethereum:xdcMainnet`\n- `ethereum:xdcApothem`\n- `ethereum:fantomMainnet`\n- `ethereum:fantomTestnet`\n- `ethereum:baseSepolia`\n- `ethereum:baseMainnet`\n- `ethereum:bscMainnet`\n- `ethereum:bscTestnet`\n- `ethereum:xlayerMainnet`\n- `ethereum:xlayerTestnet`\n- `ethereum:unichainMainnet`\n- `ethereum:unichainSepolia`\n- `ethereum:sonicMainnet`\n- `ethereum:sonicTestnet`\n\nIf your blockchain of choice is not listed above, feel free to reach out to us for more info on when support for your chain is planned.\n\n# Authentication\nAuthentication follows the [OAuth standard](https://oauth.net/2/). The Civic authentication endpoint is `https://auth0.civic.com/oauth/token`. The `grant_type` to request is  `client_credentials`.\n\nTo manage API authentication we recommend using one of the available [OAuth libraries](https://oauth.net/code/) for your platform.\n\n# Try it out!\nYou can try out the Civic Pass Customer API by using the following demo credentials to generate an auth token:\n- `client_id: dtVTGsKUlkPQ8UXKqSskS1HqNI3hERHT`,\n- `client_secret: 7DT722BjNlXUp8HVaV_ZjHzopq2Tr12doGB8sBYC-vhPo3Eh0HoidLVATFbxmwZ1`\n\nPlease keep in mind that these are shared credentials, i.e. others have access to the same Civic Passes and can for example freeze them.\n\nThe `gatekeeperNetwork` : `tgnuXXNMDLK8dy7Xm1TdeGyc95MDym4bvAQCwcW21Bf` should be used with these credentials. That is Civic's sandbox pass.\n\nThe demo pass is only supported on testnets. The current list is:\n  - `solana:devnet`\n  - `ethereum:polygonAmoy`\n  - `ethereum:sepolia`\n  - `ethereum:baseSepolia`\n  - `ethereum:arbitrumSepolia`\n  - `ethereum:optimismSepolia`\n  - `ethereum:bscTestnet`\n  - `ethereum:xdcApothem`\n  - `ethereum:xlayerTestnet`\n  - `ethereum:avalancheCChainFuji`\n  - `ethereum:unichainSepolia`\n  - `ethereum:sonicTestnet`"
+  title: Civic Customer Pass API
+  description: The APIs described below enable Civic customers to issue and manage the Civic Pass for their dApp.
   termsOfService: https://www.civic.com/legal/terms-of-service-civic-pass-v1/
   contact:
     email: devsupport@civic.com
@@ -9,13 +9,13 @@ info:
 servers:
 - url: https://api.civic.com/partner
 tags:
-- name: pass
+- name: Pass
   description: Issue and manage Civic Passes
 paths:
   /pass:
     post:
       tags:
-      - pass
+      - Pass
       summary: List Civic Passes
       description: Returns a list of all Civic Passes you have issued. Optionally filtered by the Civic Pass attributes. A pass may take a few seconds to a few minutes to show up here after issuing, depending on blockchain confirmation times.
       operationId: listPass
@@ -61,7 +61,7 @@ paths:
   /pass/{chain}/{chainNetwork}:
     post:
       tags:
-      - pass
+      - Pass
       summary: Issue a Civic Pass
       description: Issue a Civic Pass to a user's wallet. This action is asynchronous, i.e. it does not wait for the Civic Pass to be confirmed on-chain before returning.
       operationId: issuePass
@@ -106,8 +106,8 @@ paths:
   /pass/{chain}/{chainNetwork}/{wallet}:
     get:
       tags:
-      - pass
-      summary: Retrieve a Civic Pass.
+      - Pass
+      summary: Retrieve a Civic Pass
       description: Retrieve the full details about a Civic Pass you issued, including a log of all events associated with the specific pass. A pass may take a few seconds to a few minutes to show up here after issuing, depending on blockchain confirmation times.
       operationId: getPass
       parameters:
@@ -148,7 +148,7 @@ paths:
         - read:token
     patch:
       tags:
-      - pass
+      - Pass
       summary: Update a Civic Pass
       description: Updates either the status or the expiration timestamp of a Civic Pass. This action is asynchronous, i.e. it does not wait for updates to be confirmed on-chain before returning. To immediately expire a pass, for example to force a user to refresh, set an expiration data a couple of second in the future.
       operationId: patchPass
@@ -196,7 +196,7 @@ paths:
         - read:token
     delete:
       tags:
-      - pass
+      - Pass
       summary: Revoke a Civic Pass
       operationId: deletePass
       description: Revoking a Civic Pass is **irreversible**. After the Civic Pass has been revoked, it is not possible to issue a new Civic Pass to the same {chain, wallet, network} combination.
@@ -238,13 +238,6 @@ components:
       enum:
       - solana
       - ethereum
-    Wallet:
-      type: object
-      description: The wallet address to issue this token to
-      properties:
-        walletAddress:
-          type: string
-          example: '0xEA5Ce8F9C81b681876DC713d33371c3E262A5888'
     State:
       type: string
       description: Available status
@@ -381,6 +374,13 @@ components:
           description: The new expiration timestamp
           example: 1677593295
           type: number
+    Wallet:
+      type: object
+      description: The wallet address to issue this token to
+      properties:
+        walletAddress:
+          type: string
+          example: '0xEA5Ce8F9C81b681876DC713d33371c3E262A5888'
   securitySchemes:
     pass_auth:
       type: oauth2
