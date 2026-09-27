@@ -145,7 +145,7 @@ apis:
   - type: Repository
     url: https://github.com/civicteam/civic-auth-py
 - aid: civic:civic-pass-api
-  name: Civic pass API
+  name: Civic Pass API
   description: Issue and manage Civic Passes
   humanURL: https://docs.civic.com/
   baseURL: https://app.civic.com/hub/mcp
@@ -165,7 +165,7 @@ apis:
   - type: SDKs
     url: https://github.com/civicteam/npm-civic-sip-api
 - aid: civic:civic-piirequest-api
-  name: Civic piirequest API
+  name: Civic Piirequest API
   description: Get user PII and approve / reject receipt of PII
   humanURL: https://docs.civic.com/
   baseURL: https://app.civic.com/hub/mcp
