@@ -232,15 +232,15 @@ paths:
         - read:token
 components:
   schemas:
-    State:
-      type: string
-      description: Available status
-      enum:
-      - ACTIVE
-      - REVOKED
-      - FROZEN
-      - REQUESTED
-      - REJECTED
+    UpdateState:
+      type: object
+      properties:
+        state:
+          $ref: '#/components/schemas/State'
+        expiryTimestamp:
+          description: The new expiration timestamp
+          example: 1677593295
+          type: number
     PassResponse:
       type: object
       properties:
@@ -334,6 +334,15 @@ components:
         walletAddress:
           type: string
           example: '0xEA5Ce8F9C81b681876DC713d33371c3E262A5888'
+    State:
+      type: string
+      description: Available status
+      enum:
+      - ACTIVE
+      - REVOKED
+      - FROZEN
+      - REQUESTED
+      - REJECTED
     Chain:
       type: string
       description: The chain type
@@ -372,15 +381,6 @@ components:
       - unichainSepolia
       - sonicMainnet
       - sonicTestnet
-    UpdateState:
-      type: object
-      properties:
-        state:
-          $ref: '#/components/schemas/State'
-        expiryTimestamp:
-          description: The new expiration timestamp
-          example: 1677593295
-          type: number
   securitySchemes:
     pass_auth:
       type: oauth2
