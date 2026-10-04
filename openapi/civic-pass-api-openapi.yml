@@ -232,6 +232,12 @@ paths:
         - read:token
 components:
   schemas:
+    Chain:
+      type: string
+      description: The chain type
+      enum:
+      - solana
+      - ethereum
     UpdateState:
       type: object
       properties:
@@ -241,6 +247,38 @@ components:
           description: The new expiration timestamp
           example: 1677593295
           type: number
+    ChainNetwork:
+      type: string
+      description: The chain network
+      enum:
+      - mainnet-beta
+      - devnet
+      - mainnet
+      - sepolia
+      - polygonAmoy
+      - polygonMainnet
+      - polygonZKEVM
+      - polygonZKEVMTestnet
+      - optimismSepolia
+      - optimismMainnet
+      - arbitrumSepolia
+      - arbitrumMainnet
+      - avalancheCChain
+      - avalancheCChainFuji
+      - xdcMainnet
+      - xdcApothem
+      - fantomMainnet
+      - fantomTestnet
+      - baseSepolia
+      - baseMainnet
+      - bscMainnet
+      - bscTestnet
+      - xlayerMainnet
+      - xlayerTestnet
+      - unichainMainnet
+      - unichainSepolia
+      - sonicMainnet
+      - sonicTestnet
     PassResponse:
       type: object
       properties:
@@ -327,13 +365,6 @@ components:
       - id
       - onChainState
       - state
-    Wallet:
-      type: object
-      description: The wallet address to issue this token to
-      properties:
-        walletAddress:
-          type: string
-          example: '0xEA5Ce8F9C81b681876DC713d33371c3E262A5888'
     State:
       type: string
       description: Available status
@@ -343,44 +374,13 @@ components:
       - FROZEN
       - REQUESTED
       - REJECTED
-    Chain:
-      type: string
-      description: The chain type
-      enum:
-      - solana
-      - ethereum
-    ChainNetwork:
-      type: string
-      description: The chain network
-      enum:
-      - mainnet-beta
-      - devnet
-      - mainnet
-      - sepolia
-      - polygonAmoy
-      - polygonMainnet
-      - polygonZKEVM
-      - polygonZKEVMTestnet
-      - optimismSepolia
-      - optimismMainnet
-      - arbitrumSepolia
-      - arbitrumMainnet
-      - avalancheCChain
-      - avalancheCChainFuji
-      - xdcMainnet
-      - xdcApothem
-      - fantomMainnet
-      - fantomTestnet
-      - baseSepolia
-      - baseMainnet
-      - bscMainnet
-      - bscTestnet
-      - xlayerMainnet
-      - xlayerTestnet
-      - unichainMainnet
-      - unichainSepolia
-      - sonicMainnet
-      - sonicTestnet
+    Wallet:
+      type: object
+      description: The wallet address to issue this token to
+      properties:
+        walletAddress:
+          type: string
+          example: '0xEA5Ce8F9C81b681876DC713d33371c3E262A5888'
   securitySchemes:
     pass_auth:
       type: oauth2
