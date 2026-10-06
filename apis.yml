@@ -67,7 +67,7 @@ tags_raw:
 - Wallets
 url: https://raw.githubusercontent.com/api-evangelist/civic/refs/heads/main/apis.yml
 created: '2026-06-14'
-modified: '2026-06-14'
+modified: '2026-10-06'
 specificationVersion: '0.23'
 apis:
 - aid: civic:civic-hub-mcp-api
@@ -183,6 +183,8 @@ apis:
   - type: SDKs
     url: https://github.com/civicteam/npm-civic-sip-api
 common:
+- url: https://www.civic.com/feed.xml
+  type: BlogRSS
 - type: CapabilityMap
   url: capabilities/civic-capability-edges.yml
   name: Civic Business Capability Map
