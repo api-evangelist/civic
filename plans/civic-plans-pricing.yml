@@ -108,3 +108,39 @@ plans:
       - name: Civic Pass KYC permissioning
       - name: Custom guardrail policies
       - name: Volume discounts
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - free
+  - subscription
+  units:
+  - credit
+  - negotiated
+  - period
+  plans:
+  - name: Civic Hub Free
+    access: freemium
+    model: free
+    model_how: derived
+    units:
+    - credit
+    periods:
+    - month
+  - name: Civic Hub Standard
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - credit
+    - period
+    periods:
+    - month
+  - name: Civic Enterprise
+    access: enterprise
+    model: subscription
+    model_how: derived
+    units:
+    - negotiated
+    periods:
+    - month
