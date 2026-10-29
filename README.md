@@ -1,4 +1,4 @@
-# Civic (civic)
+# Civic
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,118 +64,163 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Digital identity and AI agent security platform. Civic provides authentication, identity verification, and secure connectivity infrastructure for web, mobile, and AI agent applications.
+Civic is a digital identity and security platform offering authentication, identity verification, and AI agent security infrastructure. Core products include Civic Hub (a Model Context Protocol gateway with guardrails, audit logging, secret management, and instant revocation for AI agents connecting to tools), Civic Auth (OAuth 2.0 / PKCE authentication for web and mobile apps with email, Google, and Web3 wallet sign-in plus embedded wallets on Solana and EVM chains), and Civic Labs (open-source agent infrastructure components). Originally known as a Web3 identity and KYC verification platform issuing Civic Passes (non-transferable on-chain tokens representing verified user attributes), Civic has evolved into a broader agent security layer. The Hub MCP gateway exposes a single Streamable HTTP endpoint backed by 80+ pre-built MCP server integrations and is compatible with 23+ AI agent frameworks.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/civic/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/civic/refs/heads/main/apis.yml)
+**Areas:** AI Agents · Authentication · Digital Identity · Identity Verification · KYC · MCP · Security · Solana · Web3 · Wallets
 
-## Scope
+## Civic on APIs.io
 
-- **Position:** Consuming
-- **Access:** 3rd-Party
+Everything profiled for Civic is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/civic/](https://apis.io/providers/civic/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (4)
 
-- AI Agents
-- Authentication
-- Digital Identity
-- Identity Verification
-- KYC
-- MCP
-- OAuth
-- Security
-- Solana
-- Web3
-- Wallets
+- [Civic Hub MCP API](https://apis.io/apis/civic/civic-hub-mcp-api/) — Civic Hub is a Model Context Protocol gateway that provides AI agents with secure, audited access to 80+ external tools and services through a single…
+- [Civic Auth API](https://apis.io/apis/civic/civic-auth-api/) — Civic Auth provides OAuth 2.0 and PKCE-based authentication for web and mobile applications with support for email, Google, and Web3 wallet sign-in.…
+- [Civic Pass API](https://apis.io/apis/civic/civic-pass-api/) — Issue and manage Civic Passes
+- [Civic Piirequest API](https://apis.io/apis/civic/civic-piirequest-api/) — Get user PII and approve / reject receipt of PII
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-06-14
-- **Modified:** 2026-06-14
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agentic access (1)
 
-### Civic Hub MCP API
+Which operations an agent can call, which act, and which need a human in the loop.
 
-Civic Hub is a Model Context Protocol gateway that provides AI agents with secure, audited access to 80+ external tools and services through a single Streamable HTTP endpoint (`https://app.civic.com/hub/mcp`). Authentication uses 30-day Bearer tokens. The gateway enforces least-privilege guardrails, logs every tool call, manages OAuth tokens for connected services, and supports instant access revocation.
+- [Civic Agentic Access](https://apis.io/agentic-access/civic/civic-agentic-access/)
 
-#### Tags
+#### JSON Schema (1)
 
-- AI Agents
-- Audit Logging
-- Guardrails
-- MCP
-- Security
+The data models the API reads and writes.
 
-#### Properties
+- [Civic Pass Customer API Schemas](https://apis.io/schemas/civic/civic-pass-customer-api/)
 
-- [Documentation](https://docs.civic.com/)
-- [Getting Started](https://docs.civic.com/civic/quickstart)
-- [Authentication](https://docs.civic.com/civic/reference/security)
-- [Changelog](https://docs.civic.com/civic/changelog)
-- [Repository](https://github.com/civicteam/typescript-sdk)
+#### JSON-LD (1)
 
-### Civic Auth API
+Linked-data contexts for the provider's vocabulary.
 
-OAuth 2.0 and PKCE-based authentication for web and mobile apps. Supports email, Google, and Web3 wallet sign-in with embedded wallets on Solana and EVM chains. Available as `@civic/auth`, `@civic/auth-web3`, and `@civic/auth-mcp` npm packages. Integrates with Next.js, React, Express, Hono, and standard MCP server/client toolchains.
+- [Civic Pass Context](https://apis.io/jsonld/civic/civic-pass-context/)
 
-#### Tags
+#### Examples (5)
 
-- Authentication
-- Embedded Wallets
-- MCP
-- OAuth
-- PKCE
-- Solana
-- Web3
+Example requests and responses.
 
-#### Properties
+- [Civic Pass Get](https://apis.io/examples/civic/civic-pass-get/)
+- [Civic Pass Issue](https://apis.io/examples/civic/civic-pass-issue/)
+- [Civic Pass List](https://apis.io/examples/civic/civic-pass-list/)
+- [Civic Pass Update](https://apis.io/examples/civic/civic-pass-update/)
+- [Civic Pii Get](https://apis.io/examples/civic/civic-pii-get/)
 
-- [Documentation](https://docs.civic.com/)
-- [Getting Started](https://docs.civic.com/civic/quickstart)
-- [Repository](https://github.com/civicteam/civic-auth-examples)
-- [npm SDK (@civic/auth)](https://www.npmjs.com/package/@civic/auth)
-- [npm SDK (@civic/auth-mcp)](https://www.npmjs.com/package/@civic/auth-mcp)
-- [Repository (auth-mcp)](https://github.com/civicteam/auth-mcp)
+#### Collections (4)
 
-### Civic Pass API
+Postman and Open Collection request collections.
 
-On-chain identity permissioning system that issues non-transferable Civic Passes representing verified user attributes (KYC, liveness, location). Passes are stored on Solana and EVM chains. Over 925,000 Civic Passes issued. Used for bot prevention, DeFi access control, KYC-gated token sales, and wallet attestation.
+- [Civic Customer pass API](https://apis.io/collections/civic/open-civic-pass-api/)
+- [Civic Customer pass piirequest API](https://apis.io/collections/civic/open-civic-piirequest-api/)
+- [Civic Customer pass API](https://apis.io/collections/civic/postman-civic-pass-api/)
+- [Civic Customer pass piirequest API](https://apis.io/collections/civic/postman-civic-piirequest-api/)
 
-#### Tags
+#### Governance rules (1)
 
-- Attestation
-- Blockchain
-- Identity Verification
-- KYC
-- Permissioning
-- Solana
-- Token-Gating
-- Web3
+Spectral rulesets for the provider's contracts.
 
-#### Properties
+- [Civic — jsonschema rules](https://apis.io/rules/civic/civic-jsonschema-spectral-rules/)
 
-- [Documentation](https://www.civic.com/)
-- [Repository (Solana Attestation Service)](https://github.com/civicteam/solana-attestation-service)
-- [Repository (Token2022 Transfer Hook)](https://github.com/civicteam/token-extensions-transfer-hook)
-- [SDK (Legacy SIP)](https://github.com/civicteam/npm-civic-sip-api)
+#### Security (2)
 
-## Common Properties
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Civic Authentication](https://apis.io/security/civic/civic-authentication/)
+- [Civic Domain Security](https://apis.io/security/civic/civic-domain-security/)
+
+#### OAuth scopes (1)
+
+The permissions the API asks for.
+
+- [Civic Scopes](https://apis.io/scopes/civic/civic-scopes/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Civic Plans Pricing](https://apis.io/plans/civic/civic-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Civic Rate Limits](https://apis.io/rate-limits/civic/civic-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Civic Finops](https://apis.io/finops/civic/civic-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://www.civic.com/)
 - [Documentation](https://docs.civic.com/)
-- [Getting Started](https://docs.civic.com/civic/quickstart)
-- [Portal](https://app.civic.com)
+- [Getting started](https://docs.civic.com/civic/quickstart)
 - [Pricing](https://www.civic.com/pricing/)
-- [Plans](plans/civic-plans-pricing.yml)
-- [Rate Limits](rate-limits/civic-rate-limits.yml)
-- [FinOps](finops/civic-finops.yml)
-- [Blog](https://www.civic.com/blog/)
 - [Changelog](https://docs.civic.com/civic/changelog)
-- [GitHub Organization](https://github.com/civicteam)
+- [Blog](https://www.civic.com/blog/)
 - [Security](https://docs.civic.com/civic/reference/security)
-- [Contact](mailto:bd@civic.com)
+- [GitHub](https://github.com/civicteam)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 45.3** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 56.6 |
+| Contract governance | 9.8 |
+| Operational transparency | 34.2 |
+| Developer ergonomics | 63.1 |
+| Access clarity | 31.6 |
+
+**Agent readiness 27.4** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | negotiable (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 24.1** — Payments
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/civic/](https://apis.io/providers/civic/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Civic: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/civic/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
